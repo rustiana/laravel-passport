@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\UserAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('/register', 'Auth\UserAuthController@register');
+Route::post('/login', 'Auth\UserAuthController@login');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::apiResource('/employee', 'EmployeeController')->middleware('auth:api');
+
+/* Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});
+}); */

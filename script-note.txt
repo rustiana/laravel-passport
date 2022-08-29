@@ -1,0 +1,19 @@
+composer create-project --prefer-dist laravel/laravel laravel-passport
+
+composer require laravel/passport
+
+php artisan migrate
+
+php artisan passport:install
+
+php artisan make:model Employee -m
+
+php artisan migrate
+
+php artisan make:controller Auth/UserAuthController
+
+php artisan make:resource EmployeeResource
+
+php artisan make:controller EmployeeController --api --model=Employee
+
+php artisan serve
